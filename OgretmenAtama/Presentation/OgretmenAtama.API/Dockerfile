@@ -14,7 +14,7 @@ COPY ["OgretmenAtama/Infrastructure/OgretmenAtama.Infrastructure/OgretmenAtama.I
 RUN dotnet restore "OgretmenAtama/Presentation/OgretmenAtama.API/OgretmenAtama.API.csproj"
 COPY . .
 WORKDIR "/src/Presentation/OgretmenAtama.API"
-RUN dotnet build "OgretmenAtama.API.csproj" -c Release -o /app/build
+RUN dotnet build "OgretmenAtama/OgretmenAtama.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "OgretmenAtama.API.csproj" -c Release -o /app/publish
