@@ -12,6 +12,6 @@ namespace OgretmenAtama.Domain.Entities.Concrete
         public string KurumAdi { get; set; }
         public byte KurumHizmetAlani { get; set; }
         public byte KurumTipi { get; set; }
-        public int BosKontenjan { get; set; }
+        
     }
 }

@@ -10,5 +10,6 @@ namespace OgretmenAtama.Domain.Entities.Concrete
     {
         public int KurumKodu { get; set; }
         public int AlanKodu { get; set; }
+        public int BosKontenjan { get; set; }
     }
 }
