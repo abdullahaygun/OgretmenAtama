@@ -17,5 +17,6 @@ namespace OgretmenAtama.Persistance.Data.Contexts
         public DbSet<Ilceler> Ilceler { get; set; }
         public DbSet<Iller> Iller { get; set; }
         public DbSet<Kurumlar> Kurumlar { get; set; }
+        public DbSet<KurumlarAlanlar> KurumlarAlanlar { get; set; }
     }
 }

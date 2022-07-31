@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using OgretmenAtama.Persistance.Data.Contexts;
@@ -11,9 +12,10 @@ using OgretmenAtama.Persistance.Data.Contexts;
 namespace OgretmenAtama.Persistance.Migrations
 {
     [DbContext(typeof(OgretmenAtamaDbContext))]
-    partial class OgretmenAtamaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220731193619_mig_")]
+    partial class mig_
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -140,32 +142,6 @@ namespace OgretmenAtama.Persistance.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Kurumlar");
-                });
-
-            modelBuilder.Entity("OgretmenAtama.Domain.Entities.Concrete.KurumlarAlanlar", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<int>("AlanKodu")
-                        .HasColumnType("integer");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("boolean");
-
-                    b.Property<int>("KurumKodu")
-                        .HasColumnType("integer");
-
-                    b.Property<DateTime>("ModifiedDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("KurumlarAlanlar");
                 });
 #pragma warning restore 612, 618
         }
