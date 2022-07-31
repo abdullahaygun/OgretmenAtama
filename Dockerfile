@@ -21,4 +21,5 @@ RUN dotnet publish "OgretmenAtama.API.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "OgretmenAtama.API.dll"]
+#ENTRYPOINT ["dotnet", "OgretmenAtama.API.dll"]
+CMD ASPNETCORE_URLS=http://*:$PORT dotnet OgretmenAtama.API.dll
