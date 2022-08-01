@@ -1,10 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Office.Interop.Excel;
 using OgretmenAtama.Domain.Entities.Concrete;
 using OgretmenAtama.Persistance.Data.Contexts;
 using System.Diagnostics;
-using Range = Microsoft.Office.Interop.Excel.Range;
 
 namespace OgretmenAtama.API.Controllers
 {
