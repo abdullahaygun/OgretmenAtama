@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using OgretmenAtama.Persistance.Data.Contexts;
@@ -11,9 +12,10 @@ using OgretmenAtama.Persistance.Data.Contexts;
 namespace OgretmenAtama.Persistance.Migrations
 {
     [DbContext(typeof(OgretmenAtamaDbContext))]
-    partial class OgretmenAtamaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220801221121_mig_5")]
+    partial class mig_5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
