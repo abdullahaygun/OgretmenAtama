@@ -9,15 +9,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{25DD83E8-46DE-4D38-9F92-E28A3CA15E9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OgretmenAtama.Application", "Core\OgretmenAtama.Application\OgretmenAtama.Application.csproj", "{FC9B57B8-F784-4C89-A8F9-E1FF776B049D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OgretmenAtama.Application", "Core\OgretmenAtama.Application\OgretmenAtama.Application.csproj", "{FC9B57B8-F784-4C89-A8F9-E1FF776B049D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OgretmenAtama.Domain", "Core\OgretmenAtama.Domain\OgretmenAtama.Domain.csproj", "{7BDF75A0-16F7-4337-BD60-35D032904C89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OgretmenAtama.Domain", "Core\OgretmenAtama.Domain\OgretmenAtama.Domain.csproj", "{7BDF75A0-16F7-4337-BD60-35D032904C89}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OgretmenAtama.Infrastructure", "Infrastructure\OgretmenAtama.Infrastructure\OgretmenAtama.Infrastructure.csproj", "{77D5AAD8-525B-4293-AE63-C11A449488C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OgretmenAtama.Infrastructure", "Infrastructure\OgretmenAtama.Infrastructure\OgretmenAtama.Infrastructure.csproj", "{77D5AAD8-525B-4293-AE63-C11A449488C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OgretmenAtama.Persistance", "Infrastructure\OgretmenAtama.Persistance\OgretmenAtama.Persistance.csproj", "{91449F83-4CA9-4BE7-9097-C8D0714C9CF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OgretmenAtama.Persistance", "Infrastructure\OgretmenAtama.Persistance\OgretmenAtama.Persistance.csproj", "{91449F83-4CA9-4BE7-9097-C8D0714C9CF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OgretmenAtama.API", "Presentation\OgretmenAtama.API\OgretmenAtama.API.csproj", "{EF28D066-BCE1-42B7-B189-A5AF51AD1C42}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OgretmenAtama.API", "Presentation\OgretmenAtama.API\OgretmenAtama.API.csproj", "{EF28D066-BCE1-42B7-B189-A5AF51AD1C42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OgretmenAtama.Client", "Presentation\OgretmenAtama.Client\OgretmenAtama.Client.csproj", "{74F570B3-B2B2-46CD-AE22-1F0F4B6D1D1D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{EF28D066-BCE1-42B7-B189-A5AF51AD1C42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF28D066-BCE1-42B7-B189-A5AF51AD1C42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF28D066-BCE1-42B7-B189-A5AF51AD1C42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74F570B3-B2B2-46CD-AE22-1F0F4B6D1D1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74F570B3-B2B2-46CD-AE22-1F0F4B6D1D1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74F570B3-B2B2-46CD-AE22-1F0F4B6D1D1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74F570B3-B2B2-46CD-AE22-1F0F4B6D1D1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +61,7 @@ Global
 		{77D5AAD8-525B-4293-AE63-C11A449488C7} = {04B53CF1-D27E-4F09-8F74-348023705A10}
 		{91449F83-4CA9-4BE7-9097-C8D0714C9CF7} = {04B53CF1-D27E-4F09-8F74-348023705A10}
 		{EF28D066-BCE1-42B7-B189-A5AF51AD1C42} = {25DD83E8-46DE-4D38-9F92-E28A3CA15E9D}
+		{74F570B3-B2B2-46CD-AE22-1F0F4B6D1D1D} = {25DD83E8-46DE-4D38-9F92-E28A3CA15E9D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6FEB3992-86B0-4A99-BD3A-859BD3994EDB}

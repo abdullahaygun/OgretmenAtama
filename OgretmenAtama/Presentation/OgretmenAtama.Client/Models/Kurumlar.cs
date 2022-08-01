@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OgretmenAtama.Domain.Entities.Concrete
+namespace OgretmenAtama.Client.Models
 {
     public class Kurumlar:Base
     {
@@ -14,6 +14,6 @@ namespace OgretmenAtama.Domain.Entities.Concrete
         public string KurumAdi { get; set; }
         public string KurumHizmetAlani { get; set; }
         public string KurumTipi { get; set; }
-
+        
     }
 }

@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OgretmenAtama.Domain.Entities.Concrete
-{
+namespace OgretmenAtama.Client.Models
+{ 
     public class Ilceler:Base
     {
         public string IlKodu { get; set; }

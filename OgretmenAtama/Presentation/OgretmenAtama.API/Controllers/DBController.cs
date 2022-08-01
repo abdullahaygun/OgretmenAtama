@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Office.Interop.Excel;
+using OgretmenAtama.Domain.Entities.Concrete;
 using OgretmenAtama.Persistance.Data.Contexts;
 using System.Diagnostics;
 using Range = Microsoft.Office.Interop.Excel.Range;
@@ -18,26 +19,57 @@ namespace OgretmenAtama.API.Controllers
             _context = context;
         }
 
-        #region deneme
+        #region İller Ekleme
         [Route("[action]")]
-        [HttpGet]
-        public async Task<char> Test(string filepath)
+        [HttpPost]
+        public async Task IllerEkle(List<Iller> iller)
         {
-            Microsoft.Office.Interop.Excel.Application excel = new();
-            Workbook wb;
-            Worksheet ws;
+           await _context.Iller.AddRangeAsync(iller);
+           await _context.SaveChangesAsync();
 
-            wb = excel.Workbooks.Open(filepath);
-            ws = (Worksheet)wb.Worksheets[1];
+        }
+        #endregion
 
-            Range cell = ws.Range["A1:A2"];
+        #region İlçeler Ekleme
+        [Route("[action]")]
+        [HttpPost]
+        public async Task IlcelerEkle(List<Ilceler> ilceler)
+        {
+            await _context.Ilceler.AddRangeAsync(ilceler);
+            await _context.SaveChangesAsync();
 
-            foreach (var val in cell.Value.ToString())
-            {
-                Debug.WriteLine("test: " + val);
-                return val;
-            }
-            return '0';
+        }
+        #endregion
+
+        #region Alanlar Ekleme
+        [Route("[action]")]
+        [HttpPost]
+        public async Task AlanlarEkle(List<Alanlar> alanlar)
+        {
+            await _context.Alanlar.AddRangeAsync(alanlar);
+            await _context.SaveChangesAsync();
+
+        }
+        #endregion
+
+        #region Kurumlar Ekleme
+        [Route("[action]")]
+        [HttpPost]
+        public async Task KurumlarEkle(List<Kurumlar> kurumlar)
+        {
+            await _context.Kurumlar.AddRangeAsync(kurumlar);
+            await _context.SaveChangesAsync();
+
+        }
+        #endregion
+
+        #region KurumlarAlanlar Ekleme
+        [Route("[action]")]
+        [HttpPost]
+        public async Task KurumlarAlanlarEkle(List<KurumlarAlanlar> kurumlarAlanlar)
+        {
+            await _context.KurumlarAlanlar.AddRangeAsync(kurumlarAlanlar);
+            await _context.SaveChangesAsync();
 
         }
         #endregion

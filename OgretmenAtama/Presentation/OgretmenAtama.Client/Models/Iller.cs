@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OgretmenAtama.Domain.Entities.Concrete
+namespace OgretmenAtama.Client.Models
 {
-    public class Ilceler:Base
+    public class Iller:Base
     {
         public string IlKodu { get; set; }
-        public string IlceKodu { get; set; }
-        public string IlceAdi { get; set; }
+        public string IlAdi { get; set; }
+        public string IlHizmetBolgesi { get; set; }
     }
 }
