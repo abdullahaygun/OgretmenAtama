@@ -69,7 +69,7 @@ namespace OgretmenAtama.Client
                 {
                     if (!iller.Any(x => x.IlKodu == ilKodu[i]))
                     {
-                        iller.Add(new Iller { IlHizmetBolgesi = ilHizmetBolgesi[i], IlKodu = ilKodu[i], IlAdi = ilAdi[i] });
+                        iller.Add(new Iller { IlHizmetBolgesi = ilHizmetBolgesi[i], IlKodu = ilKodu[i], IlAdi = ilAdi[i], CreatedDate = DateTime.UtcNow, Id = Guid.NewGuid(), IsActive = true });
                     }
                 }
 
@@ -96,7 +96,7 @@ namespace OgretmenAtama.Client
             Worksheet ws;
             wb = excel.Workbooks.Open(path);
             ws = (Worksheet)wb.Worksheets[1];
-            Range cell1 = ws.Range["A7:A56199"];
+            Range cell1 = ws.Range["B7:B56199"];
             Range cell2 = ws.Range["D7:D56199"];
 
             try
@@ -124,7 +124,7 @@ namespace OgretmenAtama.Client
                 {
                     if (!ilceler.Any(x => x.IlceAdi == ilceAdi[i]))
                     {
-                        ilceler.Add(new Ilceler { IlceAdi = ilceAdi[i], IlKodu = ilKodu[i], IlceKodu = (i + 1).ToString() });
+                        ilceler.Add(new Ilceler { IlceAdi = ilceAdi[i], IlKodu = ilKodu[i], IlceKodu = (i + 1).ToString(), CreatedDate = DateTime.UtcNow, Id = Guid.NewGuid(), IsActive = true });
                     }
                 }
 
@@ -179,7 +179,7 @@ namespace OgretmenAtama.Client
                 {
                     if (!alanlar.Any(x => x.AlanKodu == alanKodu[i]))
                     {
-                        alanlar.Add(new Alanlar { AlanAdi = alanAdi[i], AlanKodu = alanKodu[i] });
+                        alanlar.Add(new Alanlar { AlanAdi = alanAdi[i], AlanKodu = alanKodu[i], CreatedDate = DateTime.UtcNow, Id = Guid.NewGuid(), IsActive = true });
                     }
                 }
 
@@ -271,7 +271,10 @@ namespace OgretmenAtama.Client
                         KurumKodu = kurumKodu[i],
                         KurumTipi = kurumTipi[i],
                         IlceAdi = ilceAdi[i],
-                        IlKodu = ilKodu[i]
+                        IlKodu = ilKodu[i],
+                        CreatedDate = DateTime.UtcNow,
+                        Id = Guid.NewGuid(),
+                        IsActive = true
                     });
                 }
 
@@ -332,7 +335,7 @@ namespace OgretmenAtama.Client
 
                 for (int i = 1; i < alanKodu.Count; i++)
                 {
-                    kurumlarAlanlar.Add(new KurumlarAlanlar { AlanKodu = alanKodu[i], KurumKodu = kurumKodu[i], BosKontenjan = bosKontenjan[i] });
+                    kurumlarAlanlar.Add(new KurumlarAlanlar { AlanKodu = alanKodu[i], KurumKodu = kurumKodu[i], BosKontenjan = bosKontenjan[i], CreatedDate = DateTime.UtcNow, Id = Guid.NewGuid(), IsActive = true });
 
                 }
 
@@ -348,7 +351,22 @@ namespace OgretmenAtama.Client
             return kurumlarAlanlar;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public async Task Ekleme(object o, string apiPath)
+        {
+            // APİ ye verileri gönderme
+
+            var client = new HttpClient();
+            client.BaseAddress = new Uri("http://localhost:5233");
+
+            var content = JsonConvert.SerializeObject(o);
+            var buffer = System.Text.Encoding.UTF8;
+            var byteContent = new StringContent(content);
+            byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            HttpResponseMessage response = await client.PostAsync(apiPath, byteContent);
+        }
+
+
+        private async void button1_Click(object sender, EventArgs e)
         {
             OpenFileDialog choofdlog = new OpenFileDialog();
 
@@ -359,43 +377,64 @@ namespace OgretmenAtama.Client
             {
                 path = choofdlog.FileName;
 
-                //iller tamamlandı.
-                List<Iller> iller = new List<Iller>();
-                iller = GetDataIller(path);
+                ////iller tamamlandı.
+                //List<Iller> iller = new List<Iller>();
+                //iller = GetDataIller(path);
 
-                //ilçeler tamamlandı.
+                ////ilçeler tamamlandı.
                 List<Ilceler> ilceler = new List<Ilceler>();
                 ilceler = GetDataIlceler(path);
 
-                //alanlar tamamlandı.
-                List<Alanlar> alanlar = new List<Alanlar>();
-                alanlar = GetDataAlanlar(path);
+                ////alanlar tamamlandı.
+                //List<Alanlar> alanlar = new List<Alanlar>();
+                //alanlar = GetDataAlanlar(path);
 
                 //kurumlar tamamlandı.
                 List<Kurumlar> kurumlar = new List<Kurumlar>();
-                kurumlar = GetDataKurumlar(path);
+                kurumlar=GetDataKurumlar(path);
+                //List<List<Kurumlar>> kurumlarPartitions = kurumlar.partition(2);
 
-                //kurumlarAlanlar tamamlandı.
-                List<KurumlarAlanlar> kurumlarAlanlar = new List<KurumlarAlanlar>();
-                kurumlarAlanlar = GetDataKurumlarAlanlar(path);
+                ////kurumlarAlanlar tamamlandı.
+                //List<KurumlarAlanlar> kurumlarAlanlar = new List<KurumlarAlanlar>();
+                //List<KurumlarAlanlar> kurumlarAlanlar1 = new List<KurumlarAlanlar>();
+                //List<KurumlarAlanlar> kurumlarAlanlar2 = new List<KurumlarAlanlar>();
+                //kurumlarAlanlar = GetDataKurumlarAlanlar(path);
+                //for (int i = 0; i < 30000; i++)
+                //{
+                //    kurumlarAlanlar1.Add(kurumlarAlanlar[i]);
+                //}
 
-                t(iller, "api/DB/IllerEkle");
-                
+                //for (int i = 3000; i < 56193 - 30000; i++)
+                //{
+                //    kurumlarAlanlar2.Add(kurumlarAlanlar[i]);
+                //}
+
+
+                // api yi çağıran fonksiyonları çağırdım.
+                //t(iller, "api/DB/IllerEkle");
+                Ekleme(ilceler, "api/DB/IlcelerEkle");
+                //t(alanlar, "api/DB/AlanlarEkle");
+
+                kurumlar.partition(100);
+                //await Ekleme(kurumlar, "api/DB/KurumlarEkle");
+
+                //t(kurumlar2, "api/DB/KurumlarEkle");
+                //t(kurumlarAlanlar1, "api/DB/KurumlarAlanlarEkle");
+                //t(kurumlarAlanlar2, "api/DB/KurumlarAlanlarEkle");
+
+
             }
         }
+    }
 
-        public async Task t(object o,string apiPath)
+    public static class Extensions
+    {
+        public static List<List<T>> partition<T>(this List<T> values, int chunkSize)
         {
-            // APİ ye verileri gönderme
-
-            var client = new HttpClient();
-            client.BaseAddress = new Uri("https://ogretmenatamarobotu.herokuapp.com/");
-
-            var content = JsonConvert.SerializeObject(o);
-            var buffer = System.Text.Encoding.UTF8.GetBytes(content);
-            var byteContent = new ByteArrayContent(buffer);
-            byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-            HttpResponseMessage response = await client.PostAsync(apiPath, byteContent);
+            return values.Select((x, i) => new { Index = i, Value = x })
+                .GroupBy(x => x.Index / chunkSize)
+                .Select(x => x.Select(v => v.Value).ToList())
+                .ToList();
         }
     }
 }
